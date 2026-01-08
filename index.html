@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Auto-Call</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📞 WhatsApp Auto-Call</h1>
+            <p class="subtitle">Automatischer Anruf mit sofortiger Auflegung</p>
+        </header>
+
+        <div id="mainForm" class="form-container">
+            <form id="callForm">
+                <div class="form-group">
+                    <label for="name">Name der Person:</label>
+                    <input type="text" id="name" name="name" required placeholder="Max Mustermann">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Telefonnummer (mit Ländervorwahl):</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="+49 123 456789">
+                    <small>Format: +49 123 456789 oder 0049123456789</small>
+                </div>
+
+                <button type="submit" class="btn-primary">Anruf starten</button>
+            </form>
+        </div>
+
+        <div id="loadingScreen" class="loading-screen hidden">
+            <div class="loading-content">
+                <div class="spinner"></div>
+                <h2>Anruf läuft...</h2>
+                <p>Verbinde mit <span id="callingName"></span></p>
+                <p class="phone-display"><span id="callingPhone"></span></p>
+                <div class="timer">
+                    <span id="callTimer">00:00</span>
+                </div>
+                <p class="status-text">Bitte warten...</p>
+            </div>
+        </div>
+
+        <div id="resultScreen" class="result-screen hidden">
+            <div class="result-content">
+                <div id="resultIcon" class="result-icon">✓</div>
+                <h2>Anruf beendet</h2>
+                
+                <div class="result-details">
+                    <div class="result-item">
+                        <span class="label">Name:</span>
+                        <span id="resultName" class="value"></span>
+                    </div>
+                    <div class="result-item">
+                        <span class="label">Nummer:</span>
+                        <span id="resultPhone" class="value"></span>
+                    </div>
+                    <div class="result-item">
+                        <span class="label">Status:</span>
+                        <span id="resultStatus" class="value"></span>
+                    </div>
+                    <div class="result-item">
+                        <span class="label">Anrufdauer:</span>
+                        <span id="resultDuration" class="value"></span>
+                    </div>
+                </div>
+
+                <button id="newCallBtn" class="btn-primary">Neuer Anruf</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>⚠️ Hinweis: Diese Website speichert keine Daten nach dem Verlassen der Seite.</p>
+        <p class="disclaimer">Demo-Version: Verwendet simulierte Anrufe zu Demonstrationszwecken.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
