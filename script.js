@@ -30,12 +30,6 @@ class AutoCallApp {
         
         // Prevent accidental page refresh during call
         window.addEventListener('beforeunload', (e) => {
-            if (!this.mainForm.classList.contains('hidden') && 
-                this.loadingScreen.classList.contains('hidden') && 
-                this.resultScreen.classList.contains('hidden')) {
-                // On main form, allow leaving without warning
-                return;
-            }
             if (!this.loadingScreen.classList.contains('hidden')) {
                 e.preventDefault();
                 e.returnValue = '';
@@ -89,7 +83,7 @@ class AutoCallApp {
             const seconds = elapsed % 60;
             document.getElementById('callTimer').textContent = 
                 `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-        }, 100);
+        }, 1000);
     }
     
     stopCallTimer() {
@@ -202,10 +196,4 @@ class AutoCallApp {
 // Initialize app when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     new AutoCallApp();
-});
-
-// Ensure no data persists after page unload
-window.addEventListener('unload', () => {
-    // All data is automatically cleared as it's only stored in memory
-    // No localStorage, sessionStorage, or cookies are used
 });
