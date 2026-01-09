@@ -1,11 +1,11 @@
-# WhatsApp Auto-Call Website
+# Auto-Call Website
 
-Eine HTML-basierte Web-Anwendung für automatische WhatsApp-Anrufe mit sofortiger Auflegung.
+Eine HTML-basierte Web-Anwendung für automatische Telefonanrufe mit sofortiger Auflegung.
 
 ## 🎯 Funktionen
 
 - ✅ Eingabeformular für Name und Telefonnummer
-- ✅ Automatischer Anruf (simuliert)
+- ✅ Automatischer Anruf (simuliert) mit Start des Standard-Telefonwählers
 - ✅ Sofortige Auflegung bei Annahme
 - ✅ Echtzeit-Ladeanzeige während des Anrufs
 - ✅ Anzeige der Anrufergebnisse:
@@ -63,12 +63,7 @@ Diese Anwendung speichert **KEINE** Daten:
 ## ⚠️ Hinweise
 
 ### Demo-Version
-Diese Anwendung verwendet **simulierte Anrufe** zu Demonstrationszwecken. Für echte WhatsApp-Anrufe wäre folgendes erforderlich:
-
-- WhatsApp Business API Zugang
-- Backend-Server mit Authentifizierung
-- Webhook-Konfiguration für Anrufstatus-Updates
-- Gültige WhatsApp Business Account Credentials
+Diese Anwendung verwendet **simulierte Anrufe** zu Demonstrationszwecken. Für echte automatisierte Anrufe wären zusätzlich Backend-Integrationen erforderlich.
 
 ### Simulation-Details
 - Anrufdauer: 3-8 Sekunden bis zur "Annahme"
@@ -80,7 +75,7 @@ Diese Anwendung verwendet **simulierte Anrufe** zu Demonstrationszwecken. Für e
 
 ### Benutzeroberfläche
 - Modernes, responsives Design
-- WhatsApp-Farbschema (Grün)
+- Grün-basiertes Farbschema
 - Animierte Ladeanimationen
 - Klare Status-Anzeigen
 - Mobile-first Ansatz
@@ -106,7 +101,7 @@ Das Projekt kann einfach angepasst werden:
 ### Farben ändern (styles.css)
 ```css
 :root {
-    --primary-color: #25D366;    /* WhatsApp Grün */
+    --primary-color: #25D366;    /* Standard Grün */
     --secondary-color: #128C7E;  /* Dunkleres Grün */
 }
 ```

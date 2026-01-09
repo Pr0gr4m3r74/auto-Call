@@ -41,6 +41,7 @@ class AutoCallApp {
     startCall() {
         const name = document.getElementById('name').value.trim();
         const phone = document.getElementById('phone').value.trim();
+        const sanitizedPhone = phone.replace(/[^+\d]/g, '');
         
         if (!name || !phone) {
             alert('Bitte füllen Sie alle Felder aus.');
@@ -51,6 +52,7 @@ class AutoCallApp {
         this.callData = {
             name: name,
             phone: phone,
+            sanitizedPhone,
             startTime: new Date(),
             answered: null,
             duration: null
@@ -58,6 +60,7 @@ class AutoCallApp {
         
         // Switch to loading screen
         this.showLoadingScreen(name, phone);
+        this.initiateDeviceCall(sanitizedPhone);
         
         // Simulate call process
         this.simulateCall();
@@ -74,6 +77,17 @@ class AutoCallApp {
         // Start timer
         this.callStartTime = Date.now();
         this.startCallTimer();
+    }
+
+    initiateDeviceCall(phone) {
+        if (!phone) return;
+        
+        const telLink = document.createElement('a');
+        telLink.href = `tel:${phone}`;
+        telLink.style.display = 'none';
+        document.body.appendChild(telLink);
+        telLink.click();
+        telLink.remove();
     }
     
     startCallTimer() {
@@ -96,11 +110,10 @@ class AutoCallApp {
     simulateCall() {
         /*
          * In a real implementation, this would:
-         * 1. Connect to WhatsApp Business API
-         * 2. Initiate a call to the provided number
-         * 3. Monitor call status via webhooks
-         * 4. Automatically hang up when answered
-         * 5. Return actual call duration and status
+         * 1. Initiate a call to the provided number
+         * 2. Monitor call status via webhooks
+         * 3. Automatically hang up when answered
+         * 4. Return actual call duration and status
          * 
          * For demonstration purposes, we simulate the call behavior:
          * - Random delay (3-8 seconds) before "answer"
